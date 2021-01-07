@@ -1,0 +1,42 @@
+url: https://coderafiki.com/
+title: Crime Reporting
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+baseurl: 
+google_analytics_key:
+google_maps_javascript_api_key:
+disqus_shortname:
+
+
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Crime Reporting.
+author:
+  name:
+  email:
+  twitter: # twitter username without the @ symbol
+social:
+  name: 
+  links:
+    - '#'
+
+# -----
+# Build
+
+timezone: Etc/UTC
+
+permalink: pretty
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENCE
+  
+
+_comments:
+  description: Text shown when sharing on social media
+  blurb: Short bio or description of this person

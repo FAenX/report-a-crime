@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "assets/js"
+  ],
+  "ext": "js",
+  "ignore": ["*-b.js"],
+  "exec": "browserify assets/js/form.js -o assets/js/form-b.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] --plugins [ babel-plugin-transform-class-properties ] ]" 
+}
