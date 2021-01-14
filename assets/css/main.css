@@ -63,14 +63,15 @@ select{
 }
 
 #form-container{
-    /* width: 50%; */
-    background-color: rgba(0, 0, 0, 0.822); 
+  
+    min-height: 100vh;
+    background-color: #646464;
    
     
 }
 
 #mydiv{
-    /* height: 50%;    */
+    max-width: 450px;
 }
 
  /* */ 
