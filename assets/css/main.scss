@@ -1,3 +1,6 @@
+--- 
+--- 
+
 body, h1, h2, h3, h4, h5, h6, p {
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
@@ -5,9 +8,9 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 body {
-    color: #00c3ff;
+    // color: #00c3ff;
     font-size: 1em;
-    background-color: #ffffff;
+    background-color: #202020;
 }
 
 .btn-banner {
@@ -23,18 +26,40 @@ body {
     /* min-height: 100vh; */
 }
 
+#heading{
+    border: #646464 solid 1px;
+    background-color: #414141;
+}
+
 #form{
     /* width: 400px;  */
-    border: #00d9ff solid 1px;
-    border-radius: 10px;
+    border: #646464 solid 1px;
+    background-color: #414141;
+    box-shadow: 0 0 0 .50em rgba(46, 46, 46, 0.075);
+    
+    // border-radius: 10px;
+    .field-label {
+        text-align: left !important;
+        .label{
+            color: #ffffff !important;
+            font-weight: 400;
+        }
+    }
+}
+
+.is-primary.input, .is-primary.textarea {
+    border-color: #686969;
+    
 }
 
 .my-input{
     background-color: transparent !important;
 }
 
+
 select{
     /* width: 60vw; */
+    border: #646464 solid 1px;
 }
 
 .suggestion-item{
@@ -80,9 +105,10 @@ select{
 .graph{
     margin: 10px;
     width: 450px;
-    border: #0084ff solid 1px;
-    border-radius: 10px;
+    border: #5c5c5c solid 1px;
 }
+
+
 
 
 

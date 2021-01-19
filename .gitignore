@@ -4,4 +4,6 @@ _site/
 .jekyll-metadata
 node_modules/
 env-variables.json
+assets/js/app-b.js
+assets/js/app-b.js.*
 

@@ -1,13 +1,12 @@
-<!DOCTYPE html charset="UTF-8">
+<!DOCTYPE html  >
 <html>
-  <head>
-    {% seo %}
-    <meta charset="utf-8">
+  <head>    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  
+    {% seo %}
   </head>
   <body>
     {{ content }}
@@ -15,10 +14,17 @@
 
 
     
-    <script async src='{{ site.baseurl }}/assets/js/index.js'></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
    
 
-
   </body>
+  
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key={key}&libraries=places">
+  </script>
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script> 
+  <script async src='{{ site.baseurl }}/assets/js/index.js'></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  
+
+<script async src='{{ site.baseurl }}/assets/js/app-b.js'></script>
 </html>

@@ -1,14 +1,58 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 
 import  {Line, Bar, Doughnut}  from "react-chartjs-2";
+import axios from 'axios';
 
-import regeneratorRuntime from  'regenerator-runtime/runtime'
-regeneratorRuntime
+import regeneratorRuntime from  'regenerator-runtime/runtime';
+regeneratorRuntime;
 
 
+export default function Report({store}) {
 
-export default function Report() {
+  React.useEffect(()=>{
+
+    axios.get('/api/datapoints/')
+      .then(res=>{
+        store.dispatch({ type: 'SETDATA', data:  res.data});
+        console.log(store.getState());
+
+        const d = store.getState().data.byDate;
+        console.log(d);
+        setByDate(d);
+
+      }).catch(e=>
+        console.log(e)
+      );
+
+      
+  }, []);
+
+  const handleFilter=()=>{
+    const coordinates = store.getState().coordinates.coordinates;
+    console.log(coordinates);
+    axios.get('/api/datapoints', {params: {
+        coordinates: {
+          lat: coordinates[1], 
+          lng: coordinates[0]
+        }
+      }
+    })
+    .then(res=>{
+      store.dispatch({ type: 'SETDATA', data:  res.data});
+      console.log(store.getState());
+
+      const d = store.getState().data.byDate;
+      console.log(d);
+      setByDate(d);
+
+    }).catch(e=>
+      console.log(e)
+    );
+  };
+
+  const [byDateData, setByDate] = React.useState({});
+
+  // multiline
   const data1 = {
     labels: ['1', '2', '3', '4', '5', '6'],
     datasets: [
@@ -37,7 +81,7 @@ export default function Report() {
         yAxisID: 'y-axis-3',
       },
     ],
-  }
+  };
   
   const options1 = {
     scales: {
@@ -63,20 +107,21 @@ export default function Report() {
         },
       ],
     },
-  }
+  };
 
-  const data2 = {
-      labels: ['abc', '2', '3', '4', '5', '6'],
+  // 
+  const byDate = {
+      labels: Object.keys(byDateData),
       datasets: [
         {
-          label: '# total crime reports',
-          data: [12, 19, 13, 15, 12, 3],
+          label: '# total crime reports by month',
+          data: Object.values(byDateData),
           fill: true,
           backgroundColor: '#99ccff',
           borderColor: 'rgba(255, 99, 132, 0.2)',
         },
       ],
-    }
+    };
 
     const bar = {
       labels: ['asault', 'robberies', 'murder'],
@@ -89,9 +134,10 @@ export default function Report() {
           borderColor: 'rgba(255, 99, 132, 0.2)',
         },
       ],
-    }
+    };
   
 
+    // dougnut
   let dough  = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [
@@ -117,7 +163,7 @@ export default function Report() {
         borderWidth: 1,
       },
     ],
-  }
+  };
 
   const options = {
     scales: {
@@ -129,13 +175,21 @@ export default function Report() {
         },
       ],
     },
-  }
+  };
 
   
   return (
-    <div className='container is-flex is-flex-direction-row is-justify-content-center is-align-content-center is-flex-wrap-wrap p-4'>
+    <>
+      <div className="has-text-centered m-6">
+          <div className="m-4 is-size-4 has-text-weight-bold">Search</div>
+          <div id="search-places"></div>
+          <div className="animate__animated animate__bounce text-right">					
+						<button className="button is-rounded btn-banner m-4" onClick={handleFilter}> Filter </button> 
+					</div> 
+      </div>
+      <div className='container is-flex is-flex-direction-row is-justify-content-center is-align-content-center is-flex-wrap-wrap p-4'>
      
-        <div className="graph"><Line data={data2} options={options} /></div>
+        <div className="graph"><Line data={byDate} options={options} /></div>
      
      
         <div className="graph"><Doughnut data={dough} /></div>
@@ -147,8 +201,8 @@ export default function Report() {
         <div className="graph"><Line data={data1} options={options1} /></div>
    
     </div>
+    </>
   );
 }
 
-const rootElement = document.getElementById("reports");
-ReactDOM.render(<Report />, rootElement);
+
